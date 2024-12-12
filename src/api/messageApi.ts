@@ -14,7 +14,7 @@ export interface SendMessage {
     | "TYPING"
     | "PRESENCE"
     | "ET";
-  message_id?: number;
+  message_id?: string;
 }
 
 export const postMessage = ({

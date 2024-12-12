@@ -1,0 +1,1419 @@
+{
+    "schemes": [],
+    "swagger": "2.0",
+    "info": {
+        "description": "Room API",
+        "title": "Room API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "",
+    "basePath": "/",
+    "paths": {
+        "/room-api/workspaces": {
+            "get": {
+                "security": [
+                    {
+                        "AccessToken": []
+                    }
+                ],
+                "description": "내 workspace 조회",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Workspace"
+                ],
+                "summary": "내 workspace 조회",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.CreateWorkspaceResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ex.ErrorOutput"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "AccessToken": []
+                    }
+                ],
+                "description": "workspace 생성",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Workspace"
+                ],
+                "summary": "workspace 생성",
+                "parameters": [
+                    {
+                        "description": "query params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.CreateWorkspaceRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.CreateWorkspaceResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ex.ErrorOutput"
+                        }
+                    }
+                }
+            }
+        },
+        "/room-api/workspaces/invite": {
+            "get": {
+                "security": [
+                    {
+                        "AccessToken": []
+                    }
+                ],
+                "description": "Workspace 초대 목록 조회",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Workspace"
+                ],
+                "summary": "Workspace 초대 목록 조회",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.CreateWorkspaceResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ex.ErrorOutput"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "AccessToken": []
+                    }
+                ],
+                "description": "workspace 초대",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Workspace"
+                ],
+                "summary": "workspace 초대",
+                "parameters": [
+                    {
+                        "description": "query params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.CreateWorkspaceRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.CreateWorkspaceResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ex.ErrorOutput"
+                        }
+                    }
+                }
+            }
+        },
+        "/room-api/workspaces/invite/accept": {
+            "put": {
+                "security": [
+                    {
+                        "AccessToken": []
+                    }
+                ],
+                "description": "Workspace 초대 승락",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Workspace"
+                ],
+                "summary": "Workspace 초대 승락",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ex.ErrorOutput"
+                        }
+                    }
+                }
+            }
+        },
+        "/room-api/workspaces/{WorkspaceID}": {
+            "put": {
+                "security": [
+                    {
+                        "AccessToken": []
+                    }
+                ],
+                "description": "workspace 수정",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Workspace"
+                ],
+                "summary": "workspace 수정",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Workspace ID",
+                        "name": "workspaceID",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Update Workspace data",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.UpdateWorkspaceRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.UpdateWorkspaceResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ex.ErrorOutput"
+                        }
+                    }
+                }
+            }
+        },
+        "/room-api/workspaces/{WorkspaceID}/rooms": {
+            "get": {
+                "security": [
+                    {
+                        "AccessToken": []
+                    }
+                ],
+                "description": "내 방 목록 조회",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Room"
+                ],
+                "summary": "내 방 목록 조회",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "WorkspaceID",
+                        "name": "WorkspaceID",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.RoomDto"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ex.ErrorOutput"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "AccessToken": []
+                    }
+                ],
+                "description": "방 생성",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Room"
+                ],
+                "summary": "방 생성",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "WorkspaceID",
+                        "name": "WorkspaceID",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "query params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.CreateRoomRestRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.CreateRoomRestResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ex.ErrorOutput"
+                        }
+                    }
+                }
+            }
+        },
+        "/room-api/workspaces/{WorkspaceID}/rooms/:RoomID/leave": {
+            "put": {
+                "security": [
+                    {
+                        "AccessToken": []
+                    }
+                ],
+                "description": "방 초대",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Room"
+                ],
+                "summary": "방 초대",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "WorkspaceID",
+                        "name": "WorkspaceID",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "RoomID",
+                        "name": "RoomID",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.RoomMemberDto"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ex.ErrorOutput"
+                        }
+                    }
+                }
+            }
+        },
+        "/room-api/workspaces/{WorkspaceID}/rooms/:RoomID/members": {
+            "get": {
+                "security": [
+                    {
+                        "AccessToken": []
+                    }
+                ],
+                "description": "내 방 멤버 조회",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Room"
+                ],
+                "summary": "내 방 멤버 조회",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "WorkspaceID",
+                        "name": "WorkspaceID",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.RoomMemberDto"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ex.ErrorOutput"
+                        }
+                    }
+                }
+            }
+        },
+        "/room-api/workspaces/{WorkspaceID}/rooms/{RoomID}": {
+            "put": {
+                "security": [
+                    {
+                        "AccessToken": []
+                    }
+                ],
+                "description": "방 수정",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Room"
+                ],
+                "summary": "방 수정",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "WorkspaceID",
+                        "name": "WorkspaceID",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "query params",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.EditRoomRestRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.CreateRoomRestResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ex.ErrorOutput"
+                        }
+                    }
+                }
+            }
+        },
+        "/room-api/workspaces/{WorkspaceID}/rooms/{RoomID}/messages": {
+            "get": {
+                "security": [
+                    {
+                        "AccessToken": []
+                    }
+                ],
+                "description": "방 메시지 목록 조회",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Message"
+                ],
+                "summary": "방 메시지 목록 조회",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "WorkspaceID",
+                        "name": "WorkspaceID",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "RoomID",
+                        "name": "RoomID",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.GetMessagesResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ex.ErrorOutput"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "AccessToken": []
+                    }
+                ],
+                "description": "방 메시지 전송",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Message"
+                ],
+                "summary": "방 메시지 전송",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "WorkspaceID",
+                        "name": "WorkspaceID",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "RoomID",
+                        "name": "RoomID",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.CreateMessageRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.CreateRoomRestResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ex.ErrorOutput"
+                        }
+                    }
+                }
+            }
+        },
+        "/room-api/workspaces/{WorkspaceID}/rooms/{RoomID}/messages/{MessageID}/reactions": {
+            "post": {
+                "security": [
+                    {
+                        "AccessToken": []
+                    }
+                ],
+                "description": "리액션(emoji) 추가",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Message"
+                ],
+                "summary": "리액션(emoji) 추가",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "WorkspaceID",
+                        "name": "WorkspaceID",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "RoomID",
+                        "name": "RoomID",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "MessageID",
+                        "name": "MessageID",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.CreateReactionRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.CreateRoomEventResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ex.ErrorOutput"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "AccessToken": []
+                    }
+                ],
+                "description": "리액션(emoji) 삭제",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Message"
+                ],
+                "summary": "리액션(emoji) 삭제",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "WorkspaceID",
+                        "name": "WorkspaceID",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "RoomID",
+                        "name": "RoomID",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "MessageID",
+                        "name": "MessageID",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.CreateReactionRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.CreateRoomEventResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ex.ErrorOutput"
+                        }
+                    }
+                }
+            }
+        },
+        "/room-api/workspaces/{WorkspaceID}/rooms/{RoomID}/messages/{MessageID}/threads": {
+            "get": {
+                "security": [
+                    {
+                        "AccessToken": []
+                    }
+                ],
+                "description": "Thread 메시지 목록 조회",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Message"
+                ],
+                "summary": "Thread 메시지 목록 조회",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "WorkspaceID",
+                        "name": "WorkspaceID",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "RoomID",
+                        "name": "RoomID",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "MessageID",
+                        "name": "MessageID",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.GetMessagesResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ex.ErrorOutput"
+                        }
+                    }
+                }
+            }
+        },
+        "/workspaces/:WorkspaceID/members": {
+            "get": {
+                "description": "Workspace Member 조회\nWorkspace Member 조회",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Workspace"
+                ],
+                "summary": "Workspace Member 조회",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.WorkspaceMemberDto"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ex.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/workspaces/:WorkspaceID/members/:MemberID": {
+            "delete": {
+                "description": "Workspace 나가기",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Workspace"
+                ],
+                "summary": "Workspace 나가기",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ex.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/workspaces/:WorkspaceID/members/:MemberID/profile": {
+            "post": {
+                "description": "프로필 생성",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Workspace"
+                ],
+                "summary": "프로필 생성",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.CreateWorkspaceMemberProfileResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ex.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/workspaces/:WorkspaceID/rooms": {
+            "get": {
+                "description": "Find My rooms\nFind My rooms",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Workspace"
+                ],
+                "summary": "Find My rooms",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.RoomMemberDto"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ex.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ex.ErrorCode": {
+            "type": "string",
+            "enum": [
+                "M_INVALID_PARAM",
+                "M_INVALID_ARGUMENT",
+                "M_UNRECOGNIZED",
+                "M_NOT_JSON",
+                "4005",
+                "M_NOT_FOUND",
+                "M_MISSING_PARAM",
+                "M_BAD_STATE",
+                "M_UNSUPPORTED_OPERATION",
+                "M_UNAUTHORIZED",
+                "M_UNREGISTERED",
+                "M_FORBIDDEN",
+                "M_INVALID_USERNAME",
+                "5001",
+                "5800",
+                "5900",
+                "5999",
+                "9000",
+                "M_UNKNOWN"
+            ],
+            "x-enum-varnames": [
+                "Err_InvalidParameter",
+                "Err_InvalidArgument",
+                "Err_InvalidRequest",
+                "Err_RequestBodyNotJSON",
+                "Err_InvalidFormat",
+                "Err_NotFoundResource",
+                "Err_MissingParameter",
+                "Err_BadState",
+                "Err_UnsupportedOperation",
+                "Err_Unauthorized",
+                "Err_Unregistered",
+                "Err_Forbidden",
+                "Err_InvalidUserID",
+                "Err_ConvertModelFail",
+                "Err_InternalApiFail",
+                "Err_DBError",
+                "Err_InternalServerError",
+                "Err_NotFoundErrorCode",
+                "Err_UnknownError"
+            ]
+        },
+        "ex.ErrorOutput": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "errorCode": {
+                    "$ref": "#/definitions/ex.ErrorCode"
+                },
+                "errorMessage": {
+                    "type": "string"
+                }
+            }
+        },
+        "ex.ErrorResponse": {
+            "type": "object"
+        },
+        "model.CreateMessageRequest": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "event_type": {
+                    "$ref": "#/definitions/spec.EventType"
+                },
+                "message_id": {
+                    "description": "THREAD 타입 일 때 사용",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/spec.MessageID"
+                        }
+                    ]
+                }
+            }
+        },
+        "model.CreateReactionRequest": {
+            "type": "object",
+            "properties": {
+                "emoji": {
+                    "type": "string"
+                },
+                "is_thread": {
+                    "type": "boolean"
+                },
+                "workspace_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.CreateRoomEventResponse": {
+            "type": "object",
+            "properties": {
+                "message_id": {
+                    "$ref": "#/definitions/spec.MessageID"
+                },
+                "message_thread_id": {
+                    "$ref": "#/definitions/spec.MessageThreadID"
+                },
+                "ts": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.CreateRoomRestRequest": {
+            "type": "object",
+            "properties": {
+                "creator": {
+                    "type": "string"
+                },
+                "dm_target": {
+                    "type": "string"
+                },
+                "invite_members": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "is_private": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "room_type": {
+                    "$ref": "#/definitions/spec.RoomType"
+                },
+                "workspace_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.CreateRoomRestResponse": {
+            "type": "object",
+            "properties": {
+                "room_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.CreateUserProfileRequest": {
+            "type": "object",
+            "properties": {
+                "nickname": {
+                    "type": "string"
+                },
+                "profile_image": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.CreateWorkspaceMemberProfileResponse": {
+            "type": "object",
+            "properties": {
+                "memberProfileID": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.CreateWorkspaceRequest": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "profile": {
+                    "$ref": "#/definitions/model.CreateUserProfileRequest"
+                }
+            }
+        },
+        "model.CreateWorkspaceResponse": {
+            "type": "object",
+            "properties": {
+                "creator": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "member_id": {
+                    "type": "string"
+                },
+                "member_role": {
+                    "$ref": "#/definitions/spec.MemberRole"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "status": {
+                    "$ref": "#/definitions/spec.Status"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "workspace_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.EditRoomRestRequest": {
+            "type": "object",
+            "properties": {
+                "editor": {
+                    "type": "string"
+                },
+                "is_private": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetMessage": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "data": {
+                    "$ref": "#/definitions/spec.MessageData"
+                },
+                "message_id": {
+                    "$ref": "#/definitions/spec.MessageID"
+                },
+                "message_thread_id": {
+                    "$ref": "#/definitions/spec.MessageThreadID"
+                },
+                "sender_id": {
+                    "type": "string"
+                },
+                "ts": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetMessagesResponse": {
+            "type": "object",
+            "properties": {
+                "end": {
+                    "$ref": "#/definitions/spec.MessageID"
+                },
+                "has_more": {
+                    "type": "boolean"
+                },
+                "limit": {
+                    "type": "integer"
+                },
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.GetMessage"
+                    }
+                },
+                "room_id": {
+                    "type": "string"
+                },
+                "start": {
+                    "$ref": "#/definitions/spec.MessageID"
+                }
+            }
+        },
+        "model.RoomDto": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "integer"
+                },
+                "created_by": {
+                    "type": "string"
+                },
+                "data": {
+                    "$ref": "#/definitions/spec.RoomData"
+                },
+                "is_private": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "room_id": {
+                    "type": "string"
+                },
+                "room_type": {
+                    "$ref": "#/definitions/spec.RoomType"
+                },
+                "status": {
+                    "$ref": "#/definitions/spec.Status"
+                },
+                "workspace_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.RoomMemberDto": {
+            "type": "object",
+            "properties": {
+                "isBanned": {
+                    "type": "boolean"
+                },
+                "memberID": {
+                    "type": "string"
+                },
+                "role": {
+                    "$ref": "#/definitions/spec.MemberRole"
+                },
+                "roomID": {
+                    "type": "string"
+                },
+                "roomMemberID": {
+                    "type": "integer"
+                },
+                "status": {
+                    "$ref": "#/definitions/spec.Status"
+                }
+            }
+        },
+        "model.UpdateWorkspaceRequest": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "status": {
+                    "$ref": "#/definitions/spec.Status"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.UpdateWorkspaceResponse": {
+            "type": "object"
+        },
+        "model.WorkspaceMemberDto": {
+            "type": "object",
+            "properties": {
+                "workspaceID": {
+                    "type": "string"
+                },
+                "workspaceMemberID": {
+                    "type": "string"
+                },
+                "workspaceMemberRole": {
+                    "$ref": "#/definitions/spec.MemberRole"
+                }
+            }
+        },
+        "spec.Emoji": {
+            "type": "object",
+            "properties": {
+                "emoji": {
+                    "type": "string"
+                },
+                "sender_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "spec.EventType": {
+            "type": "string",
+            "enum": [
+                "",
+                "MESSAGE",
+                "INVITE",
+                "THREAD",
+                "REACTION",
+                "CREATE_ROOM",
+                "JOIN_ROOM",
+                "LEAVE_ROOM",
+                "TYPING",
+                "PRESENCE",
+                "ETC"
+            ],
+            "x-enum-varnames": [
+                "EventTypeNone",
+                "EventTypeMessage",
+                "EventTypeInvite",
+                "EventTypeThread",
+                "EventTypeReaction",
+                "EventTypeCreateRoom",
+                "EventTypeJoinRoom",
+                "EventTypeLeaveRoom",
+                "EventTypeTyping",
+                "EventTypePresence",
+                "EventTypeETC"
+            ]
+        },
+        "spec.MemberRole": {
+            "type": "string",
+            "enum": [
+                "CREATOR",
+                "ADMIN",
+                "NORMAL"
+            ],
+            "x-enum-varnames": [
+                "MemberCreator",
+                "MemberAdmin",
+                "MemberNormal"
+            ]
+        },
+        "spec.MessageData": {
+            "type": "object",
+            "properties": {
+                "emoji_count": {
+                    "type": "integer"
+                },
+                "emojis": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/spec.Emoji"
+                    }
+                },
+                "text": {
+                    "type": "string"
+                },
+                "thread_count": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "spec.MessageID": {
+            "type": "integer",
+            "enum": [
+                -1
+            ],
+            "x-enum-varnames": [
+                "InvalidID"
+            ]
+        },
+        "spec.MessageThreadID": {
+            "type": "integer",
+            "enum": [
+                -1
+            ],
+            "x-enum-varnames": [
+                "InvalidID"
+            ]
+        },
+        "spec.RoomData": {
+            "type": "object",
+            "properties": {
+                "members": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "spec.RoomType": {
+            "type": "string",
+            "enum": [
+                "",
+                "DM",
+                "GROUP",
+                "CHANNEL"
+            ],
+            "x-enum-varnames": [
+                "RoomTypeNone",
+                "RoomTypeDM",
+                "RoomTypeGroup",
+                "RoomTypeChannel"
+            ]
+        },
+        "spec.Status": {
+            "type": "string",
+            "enum": [
+                "ACTIVE",
+                "INACTIVE",
+                "DELETED"
+            ],
+            "x-enum-varnames": [
+                "StatusActive",
+                "StatusInactive",
+                "StatusDeleted"
+            ]
+        }
+    },
+    "securityDefinitions": {
+        "AccessToken": {
+            "type": "oauth2",
+            "flow": "accessCode",
+            "authorizationUrl": "http://10.202.20.237:9000/realms/waa-chat/protocol/openid-connect/auth",
+            "tokenUrl": "http://10.202.20.237:9000/realms/waa-chat/protocol/openid-connect/token",
+            "scopes": {
+                "openid": "openid",
+                "profile": "profile"
+            }
+        }
+    }
+}
